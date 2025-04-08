@@ -130,3 +130,34 @@ public fun burn(nft: TestNFT, _: &mut TxContext) {
     let TestNFT { id, name: _, description: _, url: _, is_soulbound: _ } = nft;
     id.delete()
 }
+
+
+#[test_only]
+use sui::{test_scenario};
+
+#[test]
+fun test_mint_to_sender() {
+    let mut scenario_val = test_scenario::begin(@0x0);
+
+    let alice = @0xA;
+    let bob = @0xB;
+
+    let name = b"nft";
+    let description = b"This is nft description";
+    let url = b"https://nft.0.1/821.git";
+
+    mint_to_sender(name, description, url, alice, scenario_val.ctx());
+}
+
+#[test]
+fun test_airdrop_to_sender() {
+    let mut scenario_val = test_scenario::begin(@0x0);
+
+    let recipient = @0xA;
+
+    let name=b"nft";
+    let description = b"description";
+    let url = b"https://nft.0.1/2832.gif";
+
+    airdrop_to_sender(name, description, url, recipient, scenario_val.ctx());
+}
