@@ -147,6 +147,7 @@ fun test_mint_to_sender() {
     let url = b"https://nft.0.1/821.git";
 
     mint_to_sender(name, description, url, alice, scenario_val.ctx());
+    scenario_val.end();
 }
 
 #[test]
@@ -160,4 +161,5 @@ fun test_airdrop_to_sender() {
     let url = b"https://nft.0.1/2832.gif";
 
     airdrop_to_sender(name, description, url, recipient, scenario_val.ctx());
+    scenario_val.end();
 }
